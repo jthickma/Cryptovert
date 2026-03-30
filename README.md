@@ -1,16 +1,66 @@
-# React + Vite
+# Cryptovert
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A sleek, cross-platform currency conversion calculator with live market rates. Supports fiat-to-crypto, crypto-to-fiat, and crypto-to-crypto conversions.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **20 cryptocurrencies** — BTC, ETH, SOL, ADA, DOGE, XRP, USDT, USDC, DOT, AVAX, LINK, MATIC, and more
+- **15 fiat currencies** — USD, EUR, GBP, JPY, CAD, AUD, CHF, CNY, INR, and more
+- **Bidirectional conversion** — type in either field, the other updates automatically
+- **Searchable dropdowns** — quickly find any currency by name or symbol
+- **Swap button** — instantly reverse the conversion pair
+- **Live exchange rates** via CoinGecko API (free, no API key required)
+- **Responsive design** — optimized for both mobile and desktop
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19 + Vite
+- Tailwind CSS v4
+- CoinGecko API (free tier)
+- Nginx (production serving)
+- Docker
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Local Development
+
+```bash
+npm install
+npm run dev
+```
+
+### Docker
+
+```bash
+docker compose up -d
+```
+
+The app will be available at **http://localhost:9147**.
+
+To rebuild after making changes:
+
+```bash
+docker compose up -d --build
+```
+
+### Production Build (without Docker)
+
+```bash
+npm run build
+npm run preview
+```
+
+## Project Structure
+
+```
+src/
+├── api.js                        # CoinGecko API client with caching
+├── currencyData.js               # Currency metadata (symbols, names, icons)
+├── components/
+│   ├── Converter.jsx             # Main converter with bidirectional input
+│   ├── CurrencySelector.jsx      # Searchable grouped dropdown
+│   └── SwapButton.jsx            # Animated swap control
+├── App.jsx                       # Root layout
+├── main.jsx                      # Entry point
+└── index.css                     # Tailwind + custom styles
+```
