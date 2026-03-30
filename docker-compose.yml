@@ -2,5 +2,5 @@ services:
   cryptovert:
     build: .
     ports:
-      - "3000:80"
+      - "9147:80"
     restart: unless-stopped
